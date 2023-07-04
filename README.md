@@ -44,7 +44,7 @@ If you want to run the game locally or contribute to its development:
 
 ## Credits
 
-This tic tac toe game was created by [Md Maruf Bin Salim Bhuiyan](https://github.com/your-username) using p5.js, a JavaScript library for creative coding.
+This tic tac toe game was created by [Md Maruf Bin Salim Bhuiyan](https://github.com/maruf-bin-salim) using p5.js, a JavaScript library for creative coding.
 
 ## License
 
