@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    display: flex;
+    gap: 50px;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+    background: url(./bg.webp);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+canvas {
+    border: 4px solid #000;
+    border-radius: 20px;
+}
+
+#controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 10px;
+    width: 300px;
+    padding: 20px;
+
+    background: rgba(214, 214, 214, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+#prompt {
+    text-align: center;
+    width: 100%;
+}
+
+#reset {
+    width: max-content;
+    background-color: #000;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    margin: auto;
+}
+
+#link {
+    color: black;
+    text-align: center;
+}
