@@ -67,7 +67,7 @@ function drawO(x, y, w, h) {
 }
 
 function makeAIMove() {
-    if (checkWin()) return;
+    if (checkResult()) return;
 
     makeRandomMove();
 }
@@ -83,7 +83,7 @@ function makeRandomMove() {
     }
 }
 
-function checkWin() {
+function checkResult() {
     for (let i = 0; i < 3; i++) {
         if (checkRowWin(i)) return board[i][0];
         if (checkColumnWin(i)) return board[0][i];
@@ -145,7 +145,7 @@ function resetGame() {
 
 function mousePressed() {
 
-    if (checkWin()) return;
+    if (checkResult()) return;
 
 
     if (currentPlayer === 'X') {
@@ -154,9 +154,6 @@ function mousePressed() {
         if (board[i][j] === '') {
             board[i][j] = currentPlayer;
             currentPlayer = 'O';
-            if (!checkWin() && !checkTie()) {
-                loop();
-            }
         }
     }
 }

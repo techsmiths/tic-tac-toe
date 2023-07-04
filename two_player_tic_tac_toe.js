@@ -10,7 +10,7 @@ function setup() {
 function draw() {
     background(255);
     drawBoard();
-    let result = checkWin();
+    let result = checkResult();
     reset.style.display = result !== null ? 'block' : 'none';
     if (result !== null) {
         if (result === 'X') {
@@ -62,7 +62,7 @@ function drawO(x, y, w, h) {
 
 
 
-function checkWin() {
+function checkResult() {
     for (let i = 0; i < 3; i++) {
         if (checkRowWin(i)) return board[i][0];
         if (checkColumnWin(i)) return board[0][i];
@@ -124,7 +124,7 @@ function resetGame() {
 
 function mousePressed() {
 
-    if (checkWin()) return;
+    if (checkResult()) return;
 
     if (currentPlayer === 'X') {
         let i = floor(mouseY / (height / 3));
