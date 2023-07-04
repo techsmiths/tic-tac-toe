@@ -69,8 +69,93 @@ function drawO(x, y, w, h) {
 function makeAIMove() {
     if (checkResult()) return;
 
-    makeRandomMove();
+    // makeRandomMove();
+
+    let bestMove = findBestMove();
+    board[bestMove.i][bestMove.j] = currentPlayer;
+    currentPlayer = 'X';
+
+
 }
+
+
+
+function minimax(board, isMaximizing) {
+
+
+    let result = checkResult();
+
+    if (result !== null) {
+        if (result === 'X') {
+            return -10;
+        } else if (result === 'O') {
+            return 10;
+        } else if (result === 'tie') {
+            return 0;
+        }
+    }
+
+    if (isMaximizing) {
+
+        let bestScore = -1000;
+
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++)
+                if (board[i][j] === '') {
+
+                    board[i][j] = 'O';
+                    bestScore = max(bestScore, minimax(board, !isMaximizing));
+                    board[i][j] = '';
+
+                }
+        }
+        return bestScore;
+    } else {
+        let bestScore = 1000;
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++)
+                if (board[i][j] === '') {
+
+                    board[i][j] = 'X';
+                    bestScore = min(bestScore, minimax(board, !isMaximizing));
+                    board[i][j] = '';
+
+                }
+        }
+        return bestScore;
+    }
+}
+
+
+
+
+
+function findBestMove() {
+    let bestVal = -1000;
+    let bestMove = { i: -1, j: -1 };
+
+
+    for (let i = 0; i < 3; i++) {
+        for (let j = 0; j < 3; j++) {
+
+            if (board[i][j] === '') {
+                board[i][j] = 'O';
+                let moveVal = minimax(board, false);
+                board[i][j] = '';
+
+                if (moveVal > bestVal) {
+                    bestMove.i = i;
+                    bestMove.j = j;
+                    bestVal = moveVal;
+                }
+            }
+        }
+    }
+
+    return bestMove;
+}
+
+
 
 function makeRandomMove() {
     let i = floor(random(3));
@@ -82,6 +167,8 @@ function makeRandomMove() {
         makeRandomMove();
     }
 }
+
+
 
 function checkResult() {
     for (let i = 0; i < 3; i++) {
