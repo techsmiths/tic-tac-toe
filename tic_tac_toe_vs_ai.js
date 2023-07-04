@@ -11,7 +11,7 @@ function setup() {
 function draw() {
     background(255);
     drawBoard();
-    let result = checkWin();
+    let result = checkResult();
     reset.style.display = result !== null ? 'block' : 'none';
     if (result !== null) {
         if (result === 'X') {
